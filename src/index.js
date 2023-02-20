@@ -2,7 +2,7 @@ import Phaser from 'phaser';
 import logoImg from './assets/logo.png';
 import desert from './assets/desert.jpg';
 import leftArrow from './assets/leftArrow.svg';
-var language;
+var language = 'en';
 if (localStorage.getItem("language") == null) language = 'zh'
 
 function lang(s) {
@@ -40,7 +40,7 @@ class MainMenu extends Phaser.Scene {
     }
 
     create() {
-
+        
         const cameraWidth = this.cameras.main.width
         const cameraHeight = this.cameras.main.height
 
@@ -56,7 +56,7 @@ class MainMenu extends Phaser.Scene {
             yoyo: true,
             repeat: -1
         })
-
+        
         var title = this.add
             .text(this.cameras.main.width / 2, 50, lang('gameTitle'), {
                 color: '#ffffff',
@@ -68,7 +68,7 @@ class MainMenu extends Phaser.Scene {
                 fill: '#FF9224'
             })
             .setOrigin(0.5)
-
+            
         const startGameBtn = this.add
             .text(this.cameras.main.width / 2, this.cameras.main.height / 2, lang('startGame'), {
                 color: '#ffffff',
@@ -85,7 +85,7 @@ class MainMenu extends Phaser.Scene {
             console.log("down")
 
         });
-
+        
         const settingBtn = this.add
             .text(this.cameras.main.width / 2, (this.cameras.main.height / 2) + 50, lang('setting'), {
                 color: '#ffffff',
@@ -111,34 +111,11 @@ class MyGame extends Phaser.Scene {
     }
 
     preload() {
-        this.load.image('logo', logoImg);
+        
     }
 
     create() {
-        console.log("hello")
-        const logo = this.add.image(400, 150, 'logo');
-
-        this.tweens.add({
-            targets: logo,
-            y: 400,
-            duration: 2000,
-            ease: "Power2",
-            yoyo: true,
-            loop: -1
-        });
-
-        const title = this.add
-            .text(this.cameras.main.width - 15, 15, `Phaser v${Phaser.VERSION}`, {
-                color: '#ffffff',
-                fontSize: 40
-            })
-            .setOrigin(1, 0).setInteractive()
-
-        title.on('pointerdown', function (pointer) {
-
-            console.log("down")
-
-        });
+        
     }
 }
 
